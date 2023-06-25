@@ -41,6 +41,13 @@ To run the Hospital Management Application locally, follow these steps:
 
 5. Build and run the application using the Symfony CLI or your preferred web server.
 
+## Credits
+The Hospital Management Application was made possible thanks to the efforts of the following individuals:
+
+The contributors and developers who have dedicated their time and expertise to building and maintaining this application.
+We express our sincere gratitude to all those who have contributed to this project. Your efforts are greatly appreciated!
+
+
 ## Acknowledgments
 
 We extend our heartfelt appreciation to the open-source community and the following libraries and frameworks that made this project possible:
