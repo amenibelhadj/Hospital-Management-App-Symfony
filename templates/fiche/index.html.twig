@@ -1,0 +1,120 @@
+{% extends 'base1.html.twig' %}
+{% block sidebar %}
+<!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_fiche_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Fiches patients</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_evenement_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Evenements</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                     
+                   
+                </ul>
+
+            </aside><!-- End Sidebar-->
+{% endblock %}
+{% block body %}
+    
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>Fiche-Patient</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('app_chartjs_new') }}">Stats</a></li>
+                    <li class="breadcrumb-item active">Fiche</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+
+         <h1>Liste des Fiches</h1>
+
+    {{ form_start(form) }}
+
+                        <div class="form-row align-items-end" >
+                            <div class="col">
+                               {{form_label(form.nom,"Chercher")}}
+                               {{form_widget(form.nom)}}
+                               {{form_errors(form.nom)}}
+                            </div>
+
+                            <div class="col">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-secondary btn-sm">Ok</button>
+                                </div>
+                            </div>
+                        </div>
+        {{ form_end(form) }}
+
+ <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Age</th>
+                <th>Poids</th>
+                <th>Taille</th>
+                <th>Email</th>
+                <th>Détails</th>
+                <th>Gestionnaire</th>
+                <th>Consultation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for fiche in fiches %}
+            <tr>
+                <td>{{ fiche.id }}</td>
+                <td>{{ fiche.nom }}</td>
+                <td>{{ fiche.prenom }}</td>
+                <td>{{ fiche.age }}</td>
+                <td>{{ fiche.poids }}</td>
+                <td>{{ fiche.taille }}</td>
+                <td>{{ fiche.email }}</td>
+                <td>
+                    <a href="{{ path('app_fiche_show', {'id': fiche.id}) }}"class="btn btn-warning rounded-pill">Afficher</a>   
+                </td>
+                <td>
+                    <a href="{{ path('app_fiche_edit', {'id': fiche.id}) }}"class="btn btn-primary rounded-pill">Modifier</a> 
+                </td>
+                 <td>
+                    <a href="{{ path('app_consultation_new') }}"class="btn btn-info rounded-pill">Consulter</a>
+                </td>
+
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="10">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_fiche_new') }}">Nouvelle Fiche</a>
+                    </div>
+                </div><!-- End Left side columns -->                  
+                </div><!-- End Right side columns -->
+            </div>
+        </section>
+    </main><!-- End #main -->
+{% endblock %}

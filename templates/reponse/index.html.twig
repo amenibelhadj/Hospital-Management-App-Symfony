@@ -1,0 +1,80 @@
+{% extends 'base1.html.twig' %}
+
+{% block sidebar %}
+{% endblock %}
+{% block body %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Traitement réclamations</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="#">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Datatables</h5>
+              <!-- Table with stripped rows -->
+              <div class="dataTable-top">
+              <center><a class="btn btn-primary rounded-pill " href="{{ path('app_reponse_new') }}">Ajouter une réponse</a></center>
+                
+              <div class="dataTable-search">
+                <input class="dataTable-input" placeholder="Search..." type="text">
+              </div>
+            </div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>IdReclamation</th>
+                                <th>Id</th>
+                                <th>Nom agent</th>
+                                <th>Prenom agent</th>
+                                <th>Traitement</th>
+                                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reponse in reponses %}
+                                <tr>
+                                    <td>{{ reponse.reclamation }}</td>
+                                    <td>{{ reponse.id }}</td>
+                                    <td>{{ reponse.nomAg }}</td>
+                                    <td>{{ reponse.prenomAg }}</td>
+                                    <td>{{ reponse.traitement }}</td>
+                                    <td>
+                                        <a href="{{ path('app_reponse_show', {'id': reponse.id}) }}"class="btn btn-success rounded-pill">show</a>
+                                        <a href="{{ path('app_reponse_edit', {'id': reponse.id}) }}"class="btn btn-danger rounded-pill">edit</a>
+                                    </td>
+                                </tr>
+                            {% else %}
+                                <tr>
+                                    <td colspan="5">no records found</td>
+                                </tr>
+                            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    
+
+              
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+{% endblock %}

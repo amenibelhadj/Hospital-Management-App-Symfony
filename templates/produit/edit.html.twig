@@ -1,0 +1,48 @@
+{% extends 'base1.html.twig' %}
+{% block sidebar %}
+
+{% endblock %}
+{% block body %}
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>MEDICAMENT/EQUIPEMENTS</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+                    <li class="breadcrumb-item active">produit</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+
+                    <h1>Edit Produit</h1>
+
+                     {{ include('produit/_form.html.twig', {'button_label': 'Update'}) }}
+
+                    <a href="{{ path('app_produit_index') }}">back to list</a>
+
+
+
+                     
+
+                    </div>
+                
+
+                
+
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+{% endblock %}

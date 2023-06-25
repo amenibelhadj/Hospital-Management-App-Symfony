@@ -1,0 +1,157 @@
+{% extends 'base.html.twig' %}
+{% block Sidebar %}
+      <div class="sidebar">
+         <!-- Sidebar  -->
+         
+         <nav id="sidebar">
+            <div id="dismiss">
+               <i class="fa fa-arrow-left"></i>
+            </div>
+            <ul class="list-unstyled components">
+               <li><a href="{{ path('app_rdv_index') }}" type="button" >Rendez vous</a></li>
+               <li><a href="{{ path('app_achat_index') }}" type="button">Pharmacie</a></li>
+               <li><a href="{{ path('app_reclamation_index') }}" type="button">Réclamation</a></li>
+               
+            </ul>
+         </nav>
+         
+      </div>
+{% endblock %}
+{% block header %}
+         <header>
+            <!-- header inner -->
+            <div class="header">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                        {% if app.user != null %}<h5><b>{{ app.user.nomUser }} {{ app.user.prenomUser }}</b></h5>{% endif %}
+                           <div class="center-desk">
+                           <li>
+                              <img src="{{asset('images/undraw_Male_avatar_re_hguk.png')}}" alt="Profile" class="rounded-circle" width="60px" height="60px">
+                           </li>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <ul class="btn">
+                           <li class="down_btn"><a href="{{ path('app_logout') }}">Sign Out</a></li>
+                           <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                           <li><button type="button" id="sidebarCollapse">
+                              <img src="{{asset('images/menu_icon.png')}}" alt="#" />
+                              </button>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+{% endblock %}
+{% block body %}
+<br><br>
+<center>
+    <div class="titlepage">
+        <h1><b>Nos évènements</b></h1>
+        <p>Choisissez l'évènement qui vous convient parmi une multitude d'évènements </p>
+    </div>
+</center>
+<center>
+<div class="container">
+                        <h5 class="mb-3">Recherche</h5>
+
+                        {{ form_start(form) }}
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-group">
+                                    {{ form_label(form.titre,"titre") }}
+                                </div>
+                                <div class="form-group">
+                                    {{ form_widget(form.titre, {'label':false,'attr':{'class':'form-control '}}) }}
+
+                                </div>
+
+                                <div class="form-group">
+                                    <button class="btn btn-primary rounded-pill">Rechercher </button>
+                                </div>
+
+                                <div class="form-group">
+                                    <a href="{{ path('app_evenement_index') }}" class="btn btn-success rounded-pill">Retour à la gestion des évènements </a>
+                                </div>
+
+                            </div>
+
+
+
+                        </div>
+
+
+                    </div>
+                    {{ form_end(form) }}
+
+
+
+
+
+
+
+
+
+
+
+            <div class="row d-flex">
+
+
+
+                {% for evenement in evenements %}
+
+
+
+
+                    <div style="margin: -5px" class="col-md-4 ftco-animate">
+                        <div class="blog-entry">
+
+                            <a href="{{ path('reserver', {'id': evenement.getId()}) }}" class="block-20" >
+
+
+                                <img style="width: 80%" src="{{ asset('imgEvent/')~ evenement.image }}"  >
+                            </a>
+                            <div class="text d-block">
+                                <div class="meta mb-3">
+                                    <div>
+                                        <a style="font-size:15px">Date : {{ evenement.dateEvent ? evenement.dateEvent|date('d-m-Y') : '' }}</a></div>
+
+                                </div>
+
+                                <h3 class="heading">
+
+                                    <a  style="font-size:25px;text-transform: uppercase;">{{ evenement.titre }}</a>
+
+                                </h3>
+                                <p>{{ evenement.description }}</p>
+                                <div class="meta mb-3">
+                                    <div><a  style="font-size:20px">{{ evenement.tarif }} dt</a></div>
+                                    <div class="tagcloud">
+                                        <a href="#" class="tag-cloud-link">{{ evenement.categorie }}</a>
+
+                                    </div>
+                                </div>
+                                 
+ <p><a  href="{{ path('reserver', {'id': evenement.getId()}) }}"  class="btn btn-warning rounded-pill" style="font-size: 15px">Réserver</a></p>
+                            </div>
+                        </div>
+                    </div>
+                {% else %}
+                    <p style="text-align: center">Désolé, aucun événement ne correspond à votre recherche</p>
+                {% endfor %}
+
+
+            </div>
+
+
+
+        </div>
+        </div>
+    </center>
+    <br><br>
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends 'base1.html.twig' %}
+{% block sidebar %}
+
+{% endblock %}
+{% block body %}
+
+    <main id="main" class="main">
+
+        <div class="pagetitle">
+            <h1>MEDICAMENT/EQUIPEMENTS</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="index.html">Acceuil</a></li>
+                    <li class="breadcrumb-item active">produit</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+
+                       <h1>Create new Poduct</h1>
+
+    {{ include('produit/_form.html.twig') }}
+
+    <a href="{{ path('app_produit_index') }}"class="btn btn-success rounded-pill">back to list</a>
+
+
+                     
+
+                    </div>
+                </div><!-- End Left side columns -->
+
+                <!-- Right side columns -->
+                <div class="col-lg-4">
+
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Filter</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                                <li><a class="dropdown-item" href="#">Ce mois</a></li>
+                                <li><a class="dropdown-item" href="#">Cette Annee</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Activite recent <span>| Aujourd'hui</span></h5>
+
+                            <div class="activity">
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">15 min</div>
+                                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                    <div class="activity-content">
+                                        ajout de <a href="#" class="fw-bold text-dark">300 panadol</a> Khayri
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">56 min</div>
+                                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                                    <div class="activity-content">
+                                        l'equipement E302 est reserve
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">2 heures</div>
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        fusiol est en rupture des stock
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">1 day</div>
+                                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                                    <div class="activity-content">
+                                        Imprimer les fiches<a href="#" class="fw-bold text-dark">ajout de </a> 600 pensements
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">2 jrs</div>
+                                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                                    <div class="activity-content">
+                                        l'equipement A25 est reserve
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">4 sem</div>
+                                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                                    <div class="activity-content">
+                                        re-checking des fiches patient
+                                    </div>
+                                </div><!-- End activity item-->
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+
+                   
+
+                  
+                </div><!-- End Right side columns -->
+
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+
+{% endblock %}

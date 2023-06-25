@@ -1,0 +1,120 @@
+{% extends 'base1.html.twig' %}
+{% block sidebar %}
+<!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_fiche_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Fiches patients</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_evenement_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Evenements</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                     
+                   
+                </ul>
+
+            </aside><!-- End Sidebar-->
+{% endblock %}
+
+{% block body %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>Vos évènements</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ path('app_admin_index') }}">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Datatables</h5>
+              <!-- Table with stripped rows -->
+              <div class="dataTable-top">
+              
+              <a class="btn btn-primary rounded-pill " href="{{ path('eventfront') }}">Voir tous les évènements</a>
+                <a class="btn btn-info rounded-pill " href="{{ path('app_evenement_new') }}">Organiser un évènement</a>
+              <div class="dataTable-search">
+                <input class="dataTable-input" placeholder="Search..." type="text">
+              </div>
+            </div>
+                  <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Categorie</th>
+                <th>Titre</th>
+                <th>About</th>
+                <th>Lieu</th>
+                <th>Date</th>
+                <th>Image</th>
+                <th>Tarif</th>
+                <th>Max</th>
+                <th>Nbre</th>
+                <th>Etat</th>
+                <th>Pour</th>
+                <th>Ajouté</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for evenement in evenements %}
+            <tr>
+                <td>{{ evenement.id }}</td>
+                <td>{{ evenement.categorie }}</td>
+                <td>{{ evenement.titre }}</td>
+                <td>{{ evenement.description }}</td>
+                <td>{{ evenement.lieu }}</td>
+                <td>{{ evenement.dateEvent ? evenement.dateEvent|date('Y-m-d') : '' }}</td>
+                <td>{{ evenement.image }}</td>
+                <td>{{ evenement.tarif }}</td>
+                <td>{{ evenement.capacite }}</td>
+                <td>{{ evenement.nbReservation }}</td>
+                <td>{{ evenement.etat }}</td>
+                <td>{{ evenement.pour }}</td>
+                <td>{{ evenement.dateAjout ? evenement.dateAjout|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a class="btn btn-primary rounded-pill "href="{{ path('app_evenement_show', {'idEvent': evenement.id}) }}">show</a>
+                    <a class="btn btn-success rounded-pill "href="{{ path('app_evenement_edit', {'idEvent': evenement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="14">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    
+
+              
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+{% endblock %}

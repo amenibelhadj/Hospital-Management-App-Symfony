@@ -1,0 +1,91 @@
+{% extends 'base1.html.twig' %}
+{% block sidebar %}
+<!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_fiche_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Fiches patients</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_evenement_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Evenements</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                     
+                   
+                </ul>
+
+            </aside><!-- End Sidebar-->
+{% endblock %}
+
+{% block body %}
+    <main id="main" class="main">
+        <div class="pagetitle">
+            <h1>Fiche-Patient</h1>
+            <nav>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{{ path('app_chartjs_new') }}">Stats</a></li>
+                    <li class="breadcrumb-item active">Fiche</li>
+                </ol>
+            </nav>
+        </div><!-- End Page Title -->
+        <section class="section dashboard">
+            <div class="row">
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+
+         <h1>Liste des Consultations</h1>
+<table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Maladie</th>
+                <th>Allergie</th>
+                <th>Traitement</th>
+                <th>Date</th>
+                <th>Gestionnaire</th>
+                <th>Fiche</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for consultation in consultations %}
+            <tr>
+                <td>{{ consultation.id }}</td>
+                <td>{{ consultation.maladie }}</td>
+                <td>{{ consultation.allergie }}</td>
+                <td>{{ consultation.traitement }}</td>
+                <td>{{ consultation.date }}</td>
+                <td>
+                    <a href="{{ path('app_consultation_show', {'id': consultation.id}) }}"class="btn btn-primary rounded-pill">Afficher</a>
+                    <a href="{{ path('app_consultation_edit', {'id': consultation.id}) }}"class="btn btn-primary rounded-pill">Modifier</a>
+                </td>
+                <td>
+                    <a href="{{ path('app_fiche_show', {'id': consultation.fiche.id}) }}">Détails</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ path('app_consultation_new') }}">Nouvelle Consultation</a>
+                    </div>
+                </div><!-- End Left side columns -->                  
+                </div><!-- End Right side columns -->
+            </div>
+        </section>
+    </main><!-- End #main -->
+{% endblock %}
+

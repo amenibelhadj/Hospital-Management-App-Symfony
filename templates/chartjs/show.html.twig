@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chartjs{% endblock %}
+{% block sidebar %}
+<!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_fiche_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Fiches patients</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_evenement_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Evenements</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                     
+                   
+                </ul>
+
+            </aside><!-- End Sidebar-->
+{% endblock %}
+{% block body %}
+    <h1>Chartjs</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ chartj.id }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chartjs_index') }}">back to list</a>
+
+    <a href="{{ path('app_chartjs_edit', {'id': chartj.id}) }}">edit</a>
+
+    {{ include('chartjs/_delete_form.html.twig') }}
+{% endblock %}

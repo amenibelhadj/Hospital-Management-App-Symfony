@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+
+{% block about %}
+
+    <br><br><br>
+<div  style="padding: 5px;margin: 5px">
+    <h1>ReservationEvenement index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>IdReservationEvenement</th>
+                <th>NbPlace</th>
+                <th>Totale</th>
+                <th>ModePaiement</th>
+                <th>IdUser</th>
+                <th>evenement</th>
+
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for reservation_evenement in reservation_evenements %}
+            <tr>
+
+                <td>{{ reservation_evenement.idReservationEvenement }}</td>
+                <td>{{ reservation_evenement.nbPlace }}</td>
+                <td>{{ reservation_evenement.totale }}</td>
+                <td>{{ reservation_evenement.modePaiement }}</td>
+                <td>{{ reservation_evenement.idUser }}</td>
+                <td>{{ reservation_evenement.getEvenement() }}</td>
+
+                <td>
+                    <a href="{{ path('app_reservation_evenement_show', {'idReservationEvenement': reservation_evenement.idReservationEvenement}) }}">show</a>
+                    <a href="{{ path('app_reservation_evenement_edit', {'idReservationEvenement': reservation_evenement.idReservationEvenement}) }}">edit</a>
+                    <a href="{{ path('app_reservation_evenement_facture', {'id': reservation_evenement.idReservationEvenement}) }}">PDF</a>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

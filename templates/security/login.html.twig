@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block header %}
+         <header>
+            <!-- header inner -->
+            <div class="header">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                           <div class="center-desk">
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <ul class="btn">
+                           <li class="down_btn"><a href="registration1">Sign Up</a></li>
+                           <li><a href="login">Log in</a></li>
+                           <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                           <li><button type="button" id="sidebarCollapse">
+                              <img src="{{asset('images/menu_icon.png')}}" alt="#" />
+                              </button>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+{% endblock %}
+
+{% block body %}
+<section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+
+              
+
+              <div class="card mb-3">
+
+                <div class="card-body">
+
+                  <div class="pt-4 pb-2">
+                    <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+                    <p class="text-center small">Entrer votre email et votre mot de passe pour se connecter</p>
+                  </div>
+<!--form de login ***************************************************************************************************************************************************************************************-->
+                        <form method="post">
+                        {% if error %}
+                        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+
+                        {% if app.user %}
+                        <div class="mb-3">
+                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                        </div>
+                        {% endif %}
+
+                        <center><h1 class="h3 mb-3 font-weight-normal">Connectez vous</h1><center>
+                        <label for="inputEmail">Email</label>
+                            <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                        <label for="inputPassword">Password</label>
+                            <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                        {#Uncomment this section and add a remember_me option below your firewall to activate remember me functionality. 
+                        See https://symfony.com/doc/current/security/remember_me.html#}
+                        <br>
+                        
+                        <a href="{{ path('forgot') }}">Mot de passe oublié</a>
+
+                        <div class="checkbox mb-3">
+                            <label><input type="checkbox"> Se rappeller de moi</label>
+                        </div>
+                        
+                        
+                        
+
+                        <center><button class="btn btn-lg btn-primary" type="submit">Se connecter</button><center>
+                        </form>
+<!--end form de login ***************************************************************************************************************************************************************************************-->
+                  
+                </div>
+              </div>
+
+              
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+    </div>
+         
+{% endblock %}

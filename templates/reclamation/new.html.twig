@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block Sidebar %}
+      <div class="sidebar">
+         <!-- Sidebar  -->
+         
+         <nav id="sidebar">
+            <div id="dismiss">
+               <i class="fa fa-arrow-left"></i>
+            </div>
+            <ul class="list-unstyled components">
+               <li><a href="{{ path('app_rdv_index') }}" type="button" >Rendez vous</a></li>
+               <li><a href="{{ path('app_achat_index') }}" type="button">Pharmacie</a></li>
+               <li><a href="{{ path('app_reclamation_index') }}" type="button">Réclamation</a></li>
+               
+            </ul>
+         </nav>
+         
+      </div>
+{% endblock %}
+{% block header %}
+         <header>
+            <!-- header inner -->
+            <div class="header">
+               <div class="container-fluid">
+                  <div class="row">
+                     <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                        {% if app.user != null %}<h5><b>{{ app.user.nomUser }} {{ app.user.prenomUser }}</b></h5>{% endif %}
+                           <div class="center-desk">
+                           <li>
+                              <img src="{{asset('images/undraw_Male_avatar_re_hguk.png')}}" alt="Profile" class="rounded-circle" width="60px" height="60px">
+                           </li>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <ul class="btn">
+                           <li class="down_btn"><a href="{{ path('app_logout') }}">Sign Out</a></li>
+                           <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                           <li><button type="button" id="sidebarCollapse">
+                              <img src="{{asset('images/menu_icon.png')}}" alt="#" />
+                              </button>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </header>
+{% endblock %}
+{% block body %}
+<br><br>
+<center>
+    <div class="titlepage">
+        <h1><b>Nouvelle réclamation</b></h1>
+        <a href="{{ path('app_reclamation_index') }}"class="btn btn-primary">back to list</a>
+    </div>
+    <br>
+
+        <center>
+
+                <div class="container">
+                
+                    {{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+                        {{ include('reclamation/_form.html.twig') }}
+                        </div>
+                        </center>
+                        <br>
+                        <br>
+
+{% endblock %}
+

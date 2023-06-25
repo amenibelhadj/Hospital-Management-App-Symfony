@@ -1,0 +1,34 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+  <div >
+ <table>
+     <tr>
+       <td>{{form_label(form.maladie,"Maladie")}}</td>
+       <td>{{form_widget(form.maladie)}}</td>
+       <td>{{form_errors(form.maladie)}}</td>
+     </tr>
+       <tr>
+        <td>{{form_label(form.allergie,"Allergie")}}</td>
+       <td>{{form_widget(form.allergie)}}</td>
+       <td>{{form_errors(form.allergie)}}</td>
+     </tr>
+       <tr>
+       <td>{{form_label(form.traitement,"Traitement")}}</td>
+       <td>{{form_widget(form.traitement)}}</td>
+       <td>{{form_errors(form.traitement)}}</td>
+     </tr>
+       <tr>
+       <td>{{form_label(form.date,"date")}}</td>
+       <td>{{form_widget(form.date)}}</td>
+       <td>{{form_errors(form.date)}}</td>
+     </tr>
+       <tr>
+       <td>{{form_label(form.fiche,"Fiche")}}</td>
+       <td>{{form_widget(form.fiche)}}</td>
+       <td>{{form_errors(form.fiche)}}</td>
+     </tr>      
+  </table>
+  </div>
+  
+    <button class="btn btn-warning rounded-pill" >{{ button_label|default('Confirmer') }}</button>
+    
+{{ form_end(form) }}

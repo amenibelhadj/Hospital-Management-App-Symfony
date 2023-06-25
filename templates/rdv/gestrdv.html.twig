@@ -1,0 +1,64 @@
+{% extends 'base1.html.twig' %}
+
+{% block sidebar %}
+            <!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('gestrdv') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion des rendez vous</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_disponibilite_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Disponibilités</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                     
+                   
+                </ul>
+
+            </aside><!-- End Sidebar-->
+        {% endblock %}
+{% block body %}
+<main id="main" class="main">
+<div class="titlepage">
+        <h1><b>Liste des Rendez-Vous</b></h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>    
+                <th>Nom medecin</th>
+                <th>Date  et   heure</th>
+                <th>1ére viste</th>
+                <th>Afficher</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for rdv in rdvs %}
+            <tr>              
+                <td>{{ rdv.nomMed }}</td>
+                <td>{{ rdv.date }} {{ rdv.heure }}</td>
+                <td>{{ rdv.prv }}</td>
+                <td><a href="{{ path('app_rdv_show', {'id': rdv.id}) }}"type="button" class="btn btn-primary rounded-pill">show</a></td>
+                <td><a href="{{ path('app_rdv_edit', {'id': rdv.id}) }}"type="button" class="btn btn-info rounded-pill">edit</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+        
+</main>
+
+{% endblock %}

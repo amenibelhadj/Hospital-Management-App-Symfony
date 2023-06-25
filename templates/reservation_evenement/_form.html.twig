@@ -1,0 +1,61 @@
+{#{{ form_start(form) }}#}
+{#    {{ form_widget(form) }}#}
+{#    <button class="btn">{{ button_label|default('Save') }}</button>#}
+{#{{ form_end(form) }}#}
+
+{{ form_start(form,{'attr':{'novalidate': 'novalidate'}}) }}
+
+<div class="row" style="padding: 5px;margin: 5px">
+
+    <div class="col">
+        <fieldset >
+
+
+            <div class="form-group">
+                {{ form_label(form.nbPlace,"nbPlace") }}
+            </div>
+            <div class="form-group">
+                {{ form_widget(form.nbPlace, {'attr':{'class':'form-control '}}) }}
+                {{ form_errors (form.nbPlace) }}
+
+            </div>
+
+            <div class="form-group">
+                {{ form_widget(form.totale, {'attr':{'class':'form-control '}}) }}
+                {{ form_errors (form.totale) }}
+
+            </div>
+            <div class="form-group">
+                {{ form_label(form.modePaiement,"modePaiement") }}
+            </div>
+            <div class="form-group" id="modePaiement">
+                {{ form_widget(form.modePaiement, {'attr':{'class':'form-control'}}) }}
+            </div>
+            <div class="form-group" >
+                {{ form_errors (form.modePaiement) }}
+
+            </div>
+            <div class="form-group">
+                {{ form_label(form.idUser , 'idUser') }}
+                <div class="row m-2">
+                    {{form_widget(form.idUser , {'attr':{'class':'form-control'}}) }}
+                    {{ form_errors (form.idUser) }}
+
+                </div>
+
+            </div>
+
+
+{#
+                    {{form_widget(form.evenement , {'attr':{'class':'form-control','type':'hidden','value':37}}) }}
+#}
+
+
+            <button class="btn btn-success">{{ button_label|default('Save') }}</button>
+
+        </fieldset>
+
+    </div>
+    {{ form_end(form) }}
+
+</div>

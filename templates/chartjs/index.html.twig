@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Chartjs index{% endblock %}
+ {% block sidebar %}
+<!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_fiche_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Fiches patients</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_evenement_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Evenements</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                     
+                   
+                </ul>
+
+            </aside><!-- End Sidebar-->
+{% endblock %}
+{% block body %}
+    <h1>Chartjs index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for chartj in chartjs %}
+            <tr>
+                <td>{{ chartj.id }}</td>
+                <td>
+                    <a href="{{ path('app_chartjs_show', {'id': chartj.id}) }}">show</a>
+                    <a href="{{ path('app_chartjs_edit', {'id': chartj.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_chartjs_new') }}">Create new</a>
+{% endblock %}

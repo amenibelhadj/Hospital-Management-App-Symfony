@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Facture réservation</title>
+
+    <style type="text/css">
+        * {
+            font-family: Verdana, Arial, sans-serif;
+        }
+        table{
+            font-size: x-small;
+        }
+        tfoot tr td{
+            font-weight: bold;
+            font-size: x-small;
+        }
+        .gray {
+            background-color: lightgray
+        }
+    </style>
+
+</head>
+<body>
+    <div class="col-xs-12">
+        <h2 class="page-header">
+
+            <center>      <title>SafeEye</title>
+             </center>
+            <h3 style="color: #2653d4"><center>Facture de réservation </center> </h3>
+
+            <small class="pull-right"></small>
+        </h2>
+
+        <div class="row invoice-info">
+            <div class="col-sm-4 invoice-col">
+                <br>
+                <address>
+                    <strong>safe eye.tn </strong><br>
+                    Tunis-Esprit<br>
+                    Phone:  (+216) 51 407 244<br>
+                    Email:Contact@safe eye.tn
+
+                </address></div>
+
+        </div>
+    </div>
+
+    <br><br><br>
+    <table width="100%">
+        <tr>
+
+
+        </tr>
+
+    </table>
+
+    <br/><br><br>
+
+    <table width="100%">
+        <thead style="background-color: lightgray;font-size:15px ;">
+        <tr>
+            <th class="text-left">Evénement</th>
+            <th class="text-right">nbPlace</th>
+            <th class="text-right">Mode de paiement</th>
+            <th class="text-right">idUser</th>
+
+            <th class="text-right">Prix unitaire</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr style="font-size: medium;">
+            <th scope="row" style="text-transform: uppercase;">{{ reservation_events.idReservationEvenement }}</th>
+            <td align="right">{{ reservation_events.nbPlace }}</td>
+            <td align="right">{{ reservation_events.modePaiement }}</td>
+            <td align="right">{{ reservation_events.idUser }}</td>
+            <td align="right">{{ reservation_events.totale / reservation_events.nbPlace  }}</td>
+
+        </tr>
+
+        <tr style="font-size: medium;">
+            <td colspan="3"></td>
+            <td align="right" style="font-weight: bold;">Total (en dt)</td>
+            <td align="right" class="gray">{{ reservation_events.totale}}</td>
+        </tr>
+
+        </tfoot>
+
+
+    </table>
+
+
+
+
+
+</body>
+</html>

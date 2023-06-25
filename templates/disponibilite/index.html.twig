@@ -1,0 +1,193 @@
+{% extends 'base1.html.twig' %}
+
+{% block sidebar %}
+            <!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('gestrdv') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion des rendez vous</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_disponibilite_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Disponibilités</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                     
+                   
+                </ul>
+
+            </aside><!-- End Sidebar-->
+        {% endblock %}
+{% block body %}
+<main id="main" class="main">
+
+      
+
+        <section class="section dashboard">
+            <div class="row">
+
+                <!-- Left side columns -->
+                <div class="col-lg-8">
+                    <div class="row">
+
+            <h5 class="card-title">Disponibilites des Medecins</h5>
+                        {{ form_start(form) }}
+
+                        <div class="form-row align-items-end" >
+                            <div class="col">
+                                {{ form_row(form.nom) }}
+                            </div>
+
+              <div class="dataTable-top">
+             <div class="col">
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary">Search</button>
+                                    <a href="{{ path('app_disponibilite_new') }}" class="btn btn-warning">Create new</a>
+                                </div>
+                               
+                            </div>
+                             
+              </div>
+
+                            
+                        </div>
+                        {{ form_end(form) }}
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Médecin</th>
+                <th>Date</th>
+                <th>Heure</th>
+                <th>Afficher</th>
+                <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for disponibilite in disponibilites %}
+            <tr>
+                <td>{{ disponibilite.id }}</td>
+                <td>{{ disponibilite.nomMedd }}</td>
+                <td>{{ disponibilite.date }}</td>
+                <td>{{ disponibilite.heure }}</td>
+                
+                <td>
+                    <a href="{{ path('app_disponibilite_show', {'id': disponibilite.id}) }}"class="btn btn-success">show</a>
+                    
+                </td>
+                <td>
+                <a href="{{ path('app_disponibilite_edit', {'id': disponibilite.id}) }}"class="btn btn-danger">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+
+
+                     
+
+                    </div>
+                </div><!-- End Left side columns -->
+
+                <!-- Right side columns -->
+                <div class="col-lg-4">
+
+                    <!-- Recent Activity -->
+                    <div class="card">
+                        <div class="filter">
+                            <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                                <li class="dropdown-header text-start">
+                                    <h6>Filter</h6>
+                                </li>
+
+                                <li><a class="dropdown-item" href="#">Aujourd'hui</a></li>
+                                <li><a class="dropdown-item" href="#">Ce mois</a></li>
+                                <li><a class="dropdown-item" href="#">Cette Annee</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="card-body">
+                            <h5 class="card-title">Activite recent <span>| Aujourd'hui</span></h5>
+
+                            <div class="activity">
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">15 min</div>
+                                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                                    <div class="activity-content">
+                                        je suis malade <a href="#" class="fw-bold text-dark">en attendant Medecin</a> Khayri
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">56 min</div>
+                                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                                    <div class="activity-content">
+                                        Accident  travail
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">2 heures</div>
+                                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                                    <div class="activity-content">
+                                        operation sécurisé
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">1 day</div>
+                                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                                    <div class="activity-content">
+                                        Imprimer les fiches<a href="#" class="fw-bold text-dark">le Medecin</a> Dani
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">2 jrs</div>
+                                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                                    <div class="activity-content">
+                                        Evenement exterieur
+                                    </div>
+                                </div><!-- End activity item-->
+
+                                <div class="activity-item d-flex">
+                                    <div class="activite-label">4 sem</div>
+                                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                                    <div class="activity-content">
+                                        re-checking des fiches patient
+                                    </div>
+                                </div><!-- End activity item-->
+
+                            </div>
+
+                        </div>
+                    </div><!-- End Recent Activity -->
+
+                   
+
+                  
+                </div><!-- End Right side columns -->
+
+            </div>
+        </section>
+
+    </main><!-- End #main -->
+
+{% endblock %}

@@ -1,0 +1,105 @@
+{{ form_start(form,{'attr':{'novalidate': 'novalidate'}})}}
+<div class="form-group">
+    {{ form_label(form.titre, "titre ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.titre, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.titre) }}
+
+</div>
+
+<div class="form-group">
+    {{ form_label(form.categorie, "categorie ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.categorie, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.categorie) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.lieu, "lieu ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.lieu, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.lieu) }}
+
+
+</div>
+
+<div class="form-group">
+    {{ form_label(form.pour, "pour ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.pour, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.pour) }}
+
+</div>
+
+<div class="form-group">
+    {{ form_label(form.etat, "etat ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.etat, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.etat) }}
+
+</div>
+
+<div class="form-group">
+    {{ form_label(form.tarif, "tarif ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.tarif, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.tarif) }}
+</div>
+
+<div class="form-group">
+    {{ form_label(form.capacite, "capacite ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.capacite, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.capacite) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.dateEvent, "dateEvent ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.dateEvent, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.dateEvent) }}
+</div>
+<div class="form-group">
+    {{ form_label(form.dateAjout, "dateAjout ") }}
+</div>
+
+
+<div class="form-group">
+    {{ form_widget(form.dateAjout, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.dateAjout) }}
+</div>
+
+
+<div class="form-group">
+    {{ form_label(form.description, "description ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.description, {'attr':{'class':'form-control col-sm-6'}}) }}
+    {{ form_errors (form.description) }}
+
+</div>
+
+
+
+<div class="form-group">
+    {{ form_label(form.image, "image ") }}
+</div>
+<div class="form-group">
+    {{ form_widget(form.image, {'attr':{'class':'form-control col-sm-6','type':'file'}}) }}
+    {{ form_errors (form.image) }}
+</div>
+
+
+
+<button class="btn btn-success">{{ button_label|default('Save') }}</button>
+    </div>
+</div>
+
+{{ form_rest(form) }}

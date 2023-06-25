@@ -1,0 +1,48 @@
+{{form_start(form,{'attr':{'novalidate': 'novalidate'}} )}}
+<table class="table text-center">
+
+<tr>
+<td><b> {{ form_label(form.nom_user,"Nom")  }} </b></td>
+<td>  {{ form_widget(form.nom_user) }} </td>  
+<td> {{ form_errors(form.nom_user) }} </td>
+</tr>
+
+
+<tr>
+<td><b>  {{ form_label(form.prenom_user,"Prénom") }} <b></td> 
+<td> {{ form_widget(form.prenom_user)}} </td> 
+<td>  {{ form_errors(form.prenom_user) }} </td> 
+</tr>
+
+
+<tr>
+<td><b>  {{ form_label(form.cin_user,"CIN") }} </b></td> 
+<td> {{ form_widget(form.cin_user)}} </td> 
+<td>  {{ form_errors(form.cin_user) }} </td> 
+</tr>
+
+
+<tr>
+<td><b>  {{ form_label(form.email,"Email") }} </b></td> 
+<td> {{ form_widget(form.email)}} </td> 
+<td>  {{ form_errors(form.email) }} </td> 
+</tr>
+
+
+<tr>
+<td><b>  {{ form_label(form.roles,"Rôle") }} </b></td> 
+<td> {{ form_widget(form.roles)}} </td> 
+<td>  {{ form_errors(form.roles) }} </td> 
+</tr>
+
+
+<tr>
+<td><b>  {{ form_label(form.password,"Mot de passe") }} </b></td> 
+<td> {{ form_widget(form.password)}} </td> 
+<td>  {{ form_errors(form.password) }} </td> 
+</tr>
+
+</table>
+<center><button class="btn btn-primary rounded-pill">{{ button_label|default('Save') }}</button></center>
+{{ form_end(form) }}
+                  

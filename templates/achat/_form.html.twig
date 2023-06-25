@@ -1,0 +1,41 @@
+
+{{form_start(form,{'attr':{'novalidate': 'novalidate'}} )}}
+<table>
+
+<tr>
+<td> {{ form_label(form.prix,"prix")  }} 
+ </td>
+<td>  {{ form_widget(form.prix) }} 
+</td>  
+<td> {{ form_errors(form.prix) }} 
+</td>
+</tr>
+
+<tr>
+
+<td>  {{ form_label(form.quantite,"quantite") }} 
+</td> 
+<td> {{ form_widget(form.quantite)}} 
+ </td> 
+<td>  {{ form_errors(form.quantite) }} 
+</td> 
+
+</tr>
+
+<tr>
+
+<td>  {{ form_label(form.produit,"produit") }} 
+</td> 
+<td> {{ form_widget(form.produit)}} 
+ </td> 
+<td>  {{ form_errors(form.produit) }} 
+</td> 
+
+</tr>
+
+
+</table>
+<br>
+<br>
+    <button>{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}

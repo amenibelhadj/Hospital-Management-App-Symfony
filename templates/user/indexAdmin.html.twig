@@ -1,0 +1,132 @@
+{% extends 'base1.html.twig' %}
+{% block sidebar %}
+            <!-- ======= Sidebar ======= -->
+            <aside id="sidebar" class="sidebar">
+
+                <ul class="sidebar-nav" id="sidebar-nav">
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_admin_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion des utilisateurs</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_fiche_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion des fiches</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('gestrdv') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion des rendezvous</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_produit_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion de la pharmacie</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_reponse_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion des réclamations</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+
+                    <li class="nav-item">
+                        <a class="nav-link "href="{{ path('app_evenement_index') }}">
+                            <i class="bi bi-grid"></i>
+                            <span>Gestion des évènements</span>
+                        </a>
+                    </li><!-- End Dashboard Nav -->
+                </ul>
+
+            </aside><!-- End Sidebar-->
+        {% endblock %}
+{% block body %}
+<main id="main" class="main">
+
+    <div class="pagetitle">
+      <h1>SAfeEYE Data Tables</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{{ path('app_admin_index') }}">Home</a></li>
+          <li class="breadcrumb-item">Tables</li>
+          <li class="breadcrumb-item active">Data</li>
+        </ol>
+      </nav>
+    </div><!-- End Page Title -->
+
+    <section class="section">
+      <div class="row">
+        <div class="col-lg-12">
+
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Datatables</h5>
+              <!-- Table with stripped rows -->
+              <div class="dataTable-top">
+              <center><a class="btn btn-primary rounded-pill " href="{{ path('app_registration2') }}">Ajouter utilisateur</a></center>
+                
+              <div class="dataTable-search">
+                <input class="dataTable-input" placeholder="Search..." type="text">
+              </div>
+            </div>
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>#</th>
+                        <th>Nom</th> 
+                        <th>Prénom</th>
+                        <th>Cin</th>
+                        <th>Email</th>
+                        <th>Rôle</th>
+                        <th>Password</th>
+                        <th>Afficher</th>
+                        <th>Modifier</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{ user.id }}</td>
+                <td>{{ user.nomUser }} </td>
+                <td>{{ user.prenomUser }}</td>
+                <td>{{ user.cinUser }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.roles[0] }}</td>
+                <td>******************</td>
+                <td><a class="btn btn-success rounded-pill" href="{{ path('app_user_show', {'id': user.id}) }}">Afficher</a></td>
+                <td><a class="btn btn-danger rounded-pill" href="{{ path('app_user_edit', {'id': user.id}) }}">Modifier</a></td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">No records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    
+
+              
+              <!-- End Table with stripped rows -->
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main><!-- End #main -->
+
+
+{% endblock %}

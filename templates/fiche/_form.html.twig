@@ -1,0 +1,39 @@
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}} ) }}
+  <div >
+ <table>
+     <tr>
+       <td>{{form_label(form.nom,"Nom")}}</td>
+       <td>{{form_widget(form.nom)}}</td>
+       <td>{{form_errors(form.nom)}}</td>
+     </tr>
+       <tr>
+        <td>{{form_label(form.prenom,"Prenom")}}</td>
+       <td>{{form_widget(form.prenom)}}</td>
+       <td>{{form_errors(form.prenom)}}</td>
+     </tr>
+       <tr>
+       <td>{{form_label(form.age,"Age")}}</td>
+       <td>{{form_widget(form.age)}}</td>
+       <td>{{form_errors(form.age)}}</td>
+     </tr>
+       <tr>
+       <td>{{form_label(form.poids,"Poids")}}</td>
+       <td>{{form_widget(form.poids)}}</td>
+       <td>{{form_errors(form.poids)}}</td>
+     </tr>
+       <tr>
+       <td>{{form_label(form.taille,"Taille")}}</td>
+       <td>{{form_widget(form.taille)}}</td>
+       <td>{{form_errors(form.taille)}}</td>
+     </tr>
+       <tr>
+       <td>{{form_label(form.email,"Email")}}</td>
+       <td>{{form_widget(form.email)}}</td>
+       <td>{{form_errors(form.email)}}</td>
+     </tr>
+  </table>
+  </div>
+  
+    <button class="btn btn-primary rounded-pill" >{{ button_label|default('Confirmer') }}</button>
+    
+{{ form_end(form) }}
